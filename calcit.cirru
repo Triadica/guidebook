@@ -2837,6 +2837,24 @@
                             :data $ {}
                               |D $ {} (:at 1646492033783) (:by |rJG4IHzWf) (:text |load-doc) (:type :leaf)
                               |T $ {} (:at 1657285003526) (:by |rJG4IHzWf) (:text "|\"projection.md") (:type :leaf)
+                  |j $ {} (:at 1657284998474) (:by |rJG4IHzWf) (:text "|\"p.mdr") (:type :expr)
+                    :data $ {}
+                      |T $ {} (:at 1646491864313) (:by |rJG4IHzWf) (:text |{}) (:type :leaf)
+                      |b $ {} (:at 1646491864729) (:by |rJG4IHzWf) (:type :expr)
+                        :data $ {}
+                          |T $ {} (:at 1646491865823) (:by |rJG4IHzWf) (:text |:title) (:type :leaf)
+                          |b $ {} (:at 1657324515418) (:by |rJG4IHzWf) (:text "|\"Performance") (:type :leaf)
+                      |e $ {} (:at 1646492677808) (:by |rJG4IHzWf) (:type :expr)
+                        :data $ {}
+                          |T $ {} (:at 1646492680045) (:by |rJG4IHzWf) (:text |:key) (:type :leaf)
+                          |b $ {} (:at 1657324560393) (:by |rJG4IHzWf) (:text |:performance) (:type :leaf)
+                      |h $ {} (:at 1646491898428) (:by |rJG4IHzWf) (:type :expr)
+                        :data $ {}
+                          |T $ {} (:at 1646492030559) (:by |rJG4IHzWf) (:text |:content) (:type :leaf)
+                          |b $ {} (:at 1646492032037) (:by |rJG4IHzWf) (:type :expr)
+                            :data $ {}
+                              |D $ {} (:at 1646492033783) (:by |rJG4IHzWf) (:text |load-doc) (:type :leaf)
+                              |T $ {} (:at 1657324513670) (:by |rJG4IHzWf) (:text "|\"performance.md") (:type :leaf)
                   |l $ {} (:at 1646555066998) (:by |rJG4IHzWf) (:type :expr)
                     :data $ {}
                       |T $ {} (:at 1646555067494) (:by |rJG4IHzWf) (:text |{}) (:type :leaf)
