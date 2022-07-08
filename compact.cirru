@@ -1,10 +1,10 @@
 
 {} (:package |docs-workflow)
-  :configs $ {} (:init-fn |docs-workflow.main/main!) (:reload-fn |docs-workflow.main/reload!) (:version |0.0.12)
+  :configs $ {} (:init-fn |app.main/main!) (:reload-fn |app.main/reload!) (:version |0.0.12)
     :modules $ [] |respo.calcit/ |lilac/ |memof/ |respo-ui.calcit/ |respo-markdown.calcit/ |reel.calcit/ |respo-router.calcit/ |alerts.calcit/
   :entries $ {}
   :files $ {}
-    |docs-workflow.comp.container $ {}
+    |app.comp.container $ {}
       :defs $ {}
         |*text-content $ quote
           defatom *text-content $ []
@@ -305,13 +305,13 @@
           def style-title $ {} (:font-family ui/font-fancy) (:font-size 18) (:font-weight 300)
             :color $ hsl 0 0 60
       :ns $ quote
-        ns docs-workflow.comp.container $ :require (respo-ui.core :as ui)
+        ns app.comp.container $ :require (respo-ui.core :as ui)
           respo-ui.core :refer $ hsl
           respo.core :refer $ defcomp defeffect <> >> div button textarea span input list-> a
           respo.comp.space :refer $ =<
           reel.comp.reel :refer $ comp-reel
           respo-md.comp.md :refer $ comp-md
-          docs-workflow.config :refer $ dev?
+          app.config :refer $ dev?
           "\"remarkable" :refer $ Remarkable
           "\"highlight.js" :default hljs
           "\"cirru-color" :as color
@@ -320,7 +320,7 @@
           respo-ui.css :as css
           "\"@memkits/azure-speech-util" :refer $ speechOne nativeSpeechOne
           respo.comp.global-keydown :refer $ comp-global-keydown
-    |docs-workflow.config $ {}
+    |app.config $ {}
       :defs $ {}
         |dev? $ quote
           def dev? $ = "\"dev" (get-env "\"mode" "\"release")
@@ -329,8 +329,8 @@
         |site $ quote
           def site $ {} (:storage-key "\"workflow")
       :ns $ quote
-        ns docs-workflow.config $ :require ("\"highlight.js/lib/languages/rust" :default rust-lang) ("\"highlight.js/lib/languages/clojure" :default clojure-lang) ("\"highlight.js/lib/languages/bash" :default bash-lang) ("\"highlight.js" :default hljs)
-    |docs-workflow.main $ {}
+        ns app.config $ :require ("\"highlight.js/lib/languages/rust" :default rust-lang) ("\"highlight.js/lib/languages/clojure" :default clojure-lang) ("\"highlight.js/lib/languages/bash" :default bash-lang) ("\"highlight.js" :default hljs)
+    |app.main $ {}
       :defs $ {}
         |*reel $ quote
           defatom *reel $ -> reel-schema/reel (assoc :base schema/store) (assoc :store schema/store)
@@ -370,39 +370,34 @@
         |render-app! $ quote
           defn render-app! () $ render! mount-target (comp-container @*reel schema/docs) dispatch!
       :ns $ quote
-        ns docs-workflow.main $ :require
+        ns app.main $ :require
           respo.core :refer $ render! clear-cache!
-          docs-workflow.comp.container :refer $ comp-container
-          docs-workflow.updater :refer $ updater
-          docs-workflow.schema :as schema
+          app.comp.container :refer $ comp-container
+          app.updater :refer $ updater
+          app.schema :as schema
           reel.util :refer $ listen-devtools!
           reel.core :refer $ reel-updater refresh-reel
           reel.schema :as reel-schema
-          docs-workflow.config :as config
+          app.config :as config
           "\"./calcit.build-errors" :default build-errors
           "\"bottom-tip" :default hud!
-    |docs-workflow.schema $ {}
+    |app.schema $ {}
       :defs $ {}
         |docs $ quote
           def docs $ []
+            {} (:title "\"Overview") (:key :overview)
+              :content $ load-doc "\"overview.md"
+              :children $ []
             {} (:title "\"Guide") (:key :guide)
               :content $ load-doc "\"guide.md"
-            {} (:title "\"Design") (:key :design)
-              :content $ load-doc "\"design.md"
-              :children $ []
-                {} (:title "\"Guide") (:key :guide)
-                  :content $ load-doc "\"guide.md"
-                {} (:title "\"Design") (:key :design)
-                  :content $ load-doc "\"design.md"
-                {} (:title "\"Overview") (:key :overview)
-                  :content $ load-doc "\"overview.md"
-                  :children $ []
-                    {} (:title "\"Cirru") (:key :cirru)
-                      :content $ load-doc "\"cirru.md"
+            {} (:title "\"Mouse Events") (:key :mouse-events)
+              :content $ load-doc "\"mouse-events.md"
+            {} (:title "\"Projection") (:key :projection)
+              :content $ load-doc "\"projection.md"
             {} (:title "\"About") (:key :about)
               :content $ load-doc "\"about.md"
-            {} (:title "\"Cirru") (:key :cirru)
-              :content $ load-doc "\"cirru.md"
+            {} (:title "\"Demonstration") (:key :demonstration)
+              :content $ load-doc "\"demonstration.md"
         |load-doc $ quote
           defmacro load-doc (filename)
             read-file $ str "\"docs/" filename
@@ -410,8 +405,8 @@
           def store $ {}
             :states $ {}
               :cursor $ []
-      :ns $ quote (ns docs-workflow.schema)
-    |docs-workflow.updater $ {}
+      :ns $ quote (ns app.schema)
+    |app.updater $ {}
       :defs $ {}
         |updater $ quote
           defn updater (store op data op-id op-time)
@@ -420,5 +415,5 @@
               :states $ update-states store data
               :hydrate-storage data
       :ns $ quote
-        ns docs-workflow.updater $ :require
+        ns app.updater $ :require
           respo.cursor :refer $ update-states

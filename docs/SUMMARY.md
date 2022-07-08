@@ -1,10 +1,8 @@
 # Calcit Docs
 
+- [Overview](overview.md)
 - [Guide](guide.md)
-- [Design](design.md)
-  - [Guide](guide.md)
-  - [Design](design.md)
-  - [Overview](overview.md)
-    - [Cirru demo](cirru.md)
+- [Mouse Events](mouse-events.md)
+- [Projection](projection.md)
 - [About](about.md)
-- [Cirru demo](cirru.md)
+- [Demostration](demonstration.md)
