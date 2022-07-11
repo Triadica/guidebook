@@ -394,6 +394,8 @@
               :content $ load-doc "\"mouse-events.md"
             {} (:title "\"Projection") (:key :projection)
               :content $ load-doc "\"projection.md"
+            {} (:title "\"Performance") (:key :performance)
+              :content $ load-doc "\"performance.md"
             {} (:title "\"About") (:key :about)
               :content $ load-doc "\"about.md"
             {} (:title "\"Demonstration") (:key :demonstration)
