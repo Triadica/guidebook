@@ -390,6 +390,8 @@
               :children $ []
             {} (:title "\"Guide") (:key :guide)
               :content $ load-doc "\"guide.md"
+            {} (:title "\"Attributes") (:key :attributes)
+              :content $ load-doc "\"attributes.md"
             {} (:title "\"Mouse Events") (:key :mouse-events)
               :content $ load-doc "\"mouse-events.md"
             {} (:title "\"Projection") (:key :projection)
