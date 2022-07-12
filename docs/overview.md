@@ -40,7 +40,7 @@ There are several things that Triadica provides in the code base:
 - 3D perspetive projection, mostly in shaders, also with some code for handling mouse events,
 - [Touch Control](https://github.com/Quatrefoil-GL/touch-control/) components that you can use to fly in 3D screen,
 
-Again, I would like to invide you to try demos https://r.tiye.me/Triadica/triadica-space/ , try to click or even maybe drag.
+Again, I would like to invide you to try demos <https://r.tiye.me/Triadica/triadica-space/> , try to click or even maybe drag.
 
 ### Calcit-js
 

@@ -392,6 +392,8 @@
               :content $ load-doc "\"guide.md"
             {} (:title "\"Attributes") (:key :attributes)
               :content $ load-doc "\"attributes.md"
+            {} (:title "\"Shaders") (:key :shaders)
+              :content $ load-doc "\"shaders.md"
             {} (:title "\"Mouse Events") (:key :mouse-events)
               :content $ load-doc "\"mouse-events.md"
             {} (:title "\"Projection") (:key :projection)

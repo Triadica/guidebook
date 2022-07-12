@@ -1,6 +1,6 @@
 ## Guide
 
-I recommend https://github.com/Triadica/triadica-workflow for trying Triadica. Too much boilerplate code.
+I recommend <https://github.com/Triadica/triadica-workflow> for trying Triadica. Too much boilerplate code.
 
 An example of a Tradica component looks like this:
 
