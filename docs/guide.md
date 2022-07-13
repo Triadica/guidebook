@@ -2,6 +2,8 @@
 
 I recommend <https://github.com/Triadica/triadica-workflow> for trying Triadica. Too much boilerplate code.
 
+<iframe width="720" height="405" frameborder="0" src="https://www.ixigua.com/iframe/7119835590593511966?autoplay=0" referrerpolicy="unsafe-url" allowfullscreen></iframe>
+
 An example of a Tradica component looks like this:
 
 ```cirru
