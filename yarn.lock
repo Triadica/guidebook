@@ -2,7 +2,14 @@
 # yarn lockfile v1
 
 
-"@calcit/procs@^0.5.47":
+"@calcit/docs-workflow@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@calcit/docs-workflow/-/docs-workflow-0.0.7.tgz#c5c67293bda20de327252229d66054a75886ebc3"
+  integrity sha512-593tgtQSo+QrHXLttsqlsj0YsbKItfJ3XUpt5FgDDgSBakcEQJC8+InjllBCoRttp97943U25D62s8AZ+5jm1A==
+  dependencies:
+    "@calcit/procs" "^0.5.41"
+
+"@calcit/procs@^0.5.41", "@calcit/procs@^0.5.47":
   version "0.5.47"
   resolved "https://registry.yarnpkg.com/@calcit/procs/-/procs-0.5.47.tgz#fc2508490bb2b85d4bb4efc93c4e93a0ea13bb1d"
   integrity sha512-/mZx78KU9+2maZ0z5x/xUySaqZOVCgLQnNwMcxgEEVIICn0vs5crdClJYw6wjYH/OleAEpi9+sk84jy/BXeqpA==
