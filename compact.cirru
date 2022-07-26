@@ -78,6 +78,8 @@
               :content $ load-doc "\"shaders.md"
             {} (:title "\"Mouse Events") (:key :mouse-events)
               :content $ load-doc "\"mouse-events.md"
+            {} (:title "\"Controls") (:key :controls)
+              :content $ load-doc "\"controls.md"
             {} (:title "\"Projection") (:key :projection)
               :content $ load-doc "\"projection.md"
             {} (:title "\"Performance") (:key :performance)

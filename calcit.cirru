@@ -487,6 +487,24 @@
                             :data $ {}
                               |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |load-doc) (:type :leaf)
                               |b $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text "|\"mouse-events.md") (:type :leaf)
+                  |r $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
+                    :data $ {}
+                      |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |{}) (:type :leaf)
+                      |b $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
+                        :data $ {}
+                          |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |:title) (:type :leaf)
+                          |b $ {} (:at 1658847392960) (:by |rJG4IHzWf) (:text "|\"Controls") (:type :leaf)
+                      |h $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
+                        :data $ {}
+                          |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |:key) (:type :leaf)
+                          |b $ {} (:at 1658847948014) (:by |rJG4IHzWf) (:text |:controls) (:type :leaf)
+                      |l $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
+                        :data $ {}
+                          |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |:content) (:type :leaf)
+                          |b $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
+                            :data $ {}
+                              |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |load-doc) (:type :leaf)
+                              |b $ {} (:at 1658847397885) (:by |rJG4IHzWf) (:text "|\"controls.md") (:type :leaf)
                   |s $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
                     :data $ {}
                       |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |{}) (:type :leaf)
