@@ -34,8 +34,17 @@ Provides a function for making colors,
 
 Source <https://github.com/Triadica/triadica-space/blob/0.0.7/shaders/triadica-noises.glsl> .
 
-Provides functions for noices:
+Provides functions for noises:
 
 - `float rand(xy)`
 - `float snoise(xy)` for Simplex 2D noise
 - `float pNoise(xy, res)` Poisson noise(not sure)
+
+
+#### `{{triadica_rotation}}` (in vertex shader)
+
+Source <https://github.com/Triadica/triadica-space/blob/0.0.10/shaders/triadica-rotation.glsl> .
+
+Provides a simple function for 3D rotation(around axis that passes origin point):
+
+- `vec3 rotation_around(float p, float axis, float angle)`
