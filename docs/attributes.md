@@ -35,14 +35,14 @@ object $ {}
 
 To make it easier to support complicated logics, there are other ways of passing attributes.
 
-#### `:grouped-attributes`
+#### `:packed-attrs`
 
 To make it easier, we can collect attributes of a single vertex in a map, and nest them in lists:
 
 ```cirru
 object $ {}
   :draw-mode :triangles
-  :grouped-attribute $ []
+  :packed-attrs $ []
     []
       {}
         :position $ [] 1 2 3
