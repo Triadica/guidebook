@@ -35,39 +35,14 @@ object $ {}
 
 To make it easier to support complicated logics, there are other ways of passing attributes.
 
-#### `triadica.core/%nested-attribute`
-
-Inside business code, the logic might be nested deeply. If we use `concat` or `mapcat`, it would be rather slow. So `%nested-attribute` was added to provide a way to specify data in arbitary nested lists:
-
-```cirru
-object $ {}
-  :draw-mode :triangles
-  :attributes $ {}
-    :position $ %{} %nested-attribute
-      :length 3
-      :augment 3
-      :data $ []
-        [] 1 2 3
-        [] 4 5 6
-        [] 7 8 9
-```
-
-`:attributes` is the field where you pass multiple names of attribtues. And in the record:
-
-- `:length` specifies the count of vertexes, it can be inferred if `nil` is passed,
-- `:augment` specifies how many float numbers are passed for each vertex,
-- `:data` is a nested list.
-
-it will be collected but Triadica mutably for performance.
-
-#### `:grouped-attributes`
+#### `:packed-attrs`
 
 To make it easier, we can collect attributes of a single vertex in a map, and nest them in lists:
 
 ```cirru
 object $ {}
   :draw-mode :triangles
-  :grouped-attribute $ []
+  :packed-attrs $ []
     []
       {}
         :position $ [] 1 2 3
