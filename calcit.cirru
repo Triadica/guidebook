@@ -505,6 +505,24 @@
                             :data $ {}
                               |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |load-doc) (:type :leaf)
                               |b $ {} (:at 1658847397885) (:by |rJG4IHzWf) (:text "|\"controls.md") (:type :leaf)
+                  |rT $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
+                    :data $ {}
+                      |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |{}) (:type :leaf)
+                      |b $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
+                        :data $ {}
+                          |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |:title) (:type :leaf)
+                          |b $ {} (:at 1661793518596) (:by |rJG4IHzWf) (:text "|\"Lines") (:type :leaf)
+                      |h $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
+                        :data $ {}
+                          |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |:key) (:type :leaf)
+                          |b $ {} (:at 1661793520332) (:by |rJG4IHzWf) (:text |:lines) (:type :leaf)
+                      |l $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
+                        :data $ {}
+                          |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |:content) (:type :leaf)
+                          |b $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
+                            :data $ {}
+                              |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |load-doc) (:type :leaf)
+                              |b $ {} (:at 1661793523219) (:by |rJG4IHzWf) (:text "|\"lines.md") (:type :leaf)
                   |s $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
                     :data $ {}
                       |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |{}) (:type :leaf)
