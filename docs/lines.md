@@ -57,9 +57,9 @@ For tube and brush, more details is explained in the video(Chinese).
 comp-strip-light
   {} (; :draw-mode :line-strip)
     :lines $ []
-      []
-        [] 0 0 0
-        [] 100 100 0
+      {}
+        :from $ [] 0 0 0
+        :to $ [] 100 100 0
     :dot-radius 4
     :step 6
     :offset 12
