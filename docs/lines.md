@@ -20,10 +20,11 @@ comp-tube $ {} (:draw-mode :line-loop)
       let
           angle $ * 0.04 idx
           r 200
-        []
-          * r $ cos angle
-          * r $ sin angle
-          * idx 0.6
+        {}
+          :position $ []
+            * r $ cos angle
+            * r $ sin angle
+            * idx 0.6
   :normal0 $ [] 0 0 1
 ```
 
@@ -36,10 +37,11 @@ comp-brush $ {} (; :draw-mode :line-strip)
       let
           angle $ * 0.06 idx
           r 40
-        []
-          * r $ cos angle
-          * r $ sin angle
-          * idx 0.6
+        {}
+          :position $ []
+            * r $ cos angle
+            * r $ sin angle
+            * idx 0.6
   :brush $ [] 8 0
   :brush1 $ [] 4 4
   :brush2 $ [] 6 3
