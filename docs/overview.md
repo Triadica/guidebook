@@ -44,4 +44,6 @@ Again, I would like to invide you to try demos <https://r.tiye.me/Triadica/triad
 
 ### Calcit-js
 
-[Calcit](http://calcit-lang.org/) has great support for HMR, also not bad interop for JavaScript. Take it as a simplified version of [ClojureScript](https://r.tiye.me/clojure-china/clojure-script.org/) if you feel strange.
+[Calcit](http://calcit-lang.org/) has great support for HMR, and decent interop for JavaScript. Take it as a simplified version of [ClojureScript](https://r.tiye.me/clojure-china/clojure-script.org/) if you feel strange.
+
+If you want to use TypeScript, try <https://github.com/Triadica/triadica.ts> , which implemented a relatively older feature set of Triadica.
