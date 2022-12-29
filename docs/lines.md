@@ -11,6 +11,24 @@ However in WebGL, lines has a constent width of `1`, which does not meet many sc
 
 There are two components provided under `triadica.comp.line`:
 
+### Segments
+
+`comp-segments` draws many lines into width 2 rectangles. Brushing direction is calculated from forward direction:
+
+```cirru
+comp-segments $ {} (; :draw-mode :line-strip)
+  :segments $ []
+    {}
+      :from $ [] 0 0 0
+      :to $ [] 0 100 0
+    {}
+      :from $ [] 400 50 -20
+      :to $ [] -10 300 40
+  :width 2
+```
+
+### Tube
+
 `comp-tube` draws a curve into a tube by generating triangles. Some drawbacks is you have to pass a `:normal0` argument to help it decide how to start to cross product for tube surfaces. `normal0` is a `vec3` vector that is not supposed to be parallel with any 2 points, default value is `[] 0 0 1`. For smooth curves, it's not hard to pick:
 
 ```cirru
@@ -27,6 +45,8 @@ comp-tube $ {} (:draw-mode :line-loop)
             * idx 0.6
   :normal0 $ [] 0 0 1
 ```
+
+### Brush
 
 `comp-brush` offer a brush for quickly adding triangles perpendicular to eye sight casted from camera. It's a brush(or 2, 3 brushes) painting extra colors. Default brush is `[] 8 0`. It may not look good from specific angles, but it's a lot cheaper:
 
