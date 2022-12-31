@@ -6,6 +6,7 @@
 - [Shaders](shaders.md)
 - [Mouse Events](mouse-events.md)
 - [Controls](controls.md)
+- [Rotation](rotation.md)
 - [Lines](lines.md)
 - [Projection](projection.md)
 - [Performance](performance.md)

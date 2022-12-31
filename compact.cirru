@@ -80,6 +80,8 @@
               :content $ load-doc "\"mouse-events.md"
             {} (:title "\"Controls") (:key :controls)
               :content $ load-doc "\"controls.md"
+            {} (:title "\"Rotation") (:key :rotation)
+              :content $ load-doc "\"rotation.md"
             {} (:title "\"Lines") (:key :lines)
               :content $ load-doc "\"lines.md"
             {} (:title "\"Projection") (:key :projection)
