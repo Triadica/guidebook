@@ -3,7 +3,7 @@
   "name": "@calcit/docs-workflow",
   "dependencies": {
     "@calcit/docs-workflow": "^0.0.7",
-    "@calcit/procs": "^0.6.17"
+    "@calcit/procs": "^0.6.18"
   },
   "devDependencies": {
     "bottom-tip": "^0.1.3",
