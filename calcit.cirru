@@ -505,6 +505,24 @@
                             :data $ {}
                               |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |load-doc) (:type :leaf)
                               |b $ {} (:at 1658847397885) (:by |rJG4IHzWf) (:text "|\"controls.md") (:type :leaf)
+                  |rD $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
+                    :data $ {}
+                      |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |{}) (:type :leaf)
+                      |b $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
+                        :data $ {}
+                          |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |:title) (:type :leaf)
+                          |b $ {} (:at 1672458929553) (:by |rJG4IHzWf) (:text "|\"Rotation") (:type :leaf)
+                      |h $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
+                        :data $ {}
+                          |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |:key) (:type :leaf)
+                          |b $ {} (:at 1672458937827) (:by |rJG4IHzWf) (:text |:rotation) (:type :leaf)
+                      |l $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
+                        :data $ {}
+                          |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |:content) (:type :leaf)
+                          |b $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
+                            :data $ {}
+                              |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |load-doc) (:type :leaf)
+                              |b $ {} (:at 1672458934655) (:by |rJG4IHzWf) (:text "|\"rotation.md") (:type :leaf)
                   |rT $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:type :expr)
                     :data $ {}
                       |T $ {} (:at 1657645255706) (:by |rJG4IHzWf) (:text |{}) (:type :leaf)
