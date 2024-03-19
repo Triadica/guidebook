@@ -28,7 +28,7 @@ jobs:
 
     - name: Deploy to server
       id: deploy
-      uses: Pendect/action-rsyncer@v1.1.0
+      uses: Pendect/action-rsyncer@v2.0.0
       env:
         DEPLOY_KEY: ${{secrets.rsync_private_key}}
       with:
@@ -41,27 +41,26 @@ jobs:
     - name: Display status from deploy
       run: echo "${{ steps.deploy.outputs.status }}"
 
+    # also need to upload mdbook
 
-    # also need to upload mddook
+    - uses: supplypike/setup-bin@v3
+      with:
+        uri: 'https://github.com/rust-lang/mdBook/releases/download/v0.4.14/mdbook-v0.4.14-x86_64-unknown-linux-gnu.tar.gz'
+        name: 'mdbook'
+        version: '0.4.14'
 
-    - name: curl mdbook.tar.gz
-      run: curl -L https://github.com/rust-lang/mdBook/releases/download/v0.4.14/mdbook-v0.4.14-x86_64-unknown-linux-gnu.tar.gz > ./mdbook.tar.gz
-
-    - name: curl linkcheck
-      run: curl -L https://github.com/Michael-F-Bryan/mdbook-linkcheck/releases/download/v0.7.6/mdbook-linkcheck.x86_64-unknown-linux-gnu.zip > ./linkcheck.zip
-
-    - name: tar mdbook
-      run: tar -zxvf ./mdbook.tar.gz && unzip -n ./linkcheck.zip && chmod +x mdbook-linkcheck
-
-    - name: trick path
-      run: echo "::add-path::$GITHUB_WORKSPACE/"
+    - uses: supplypike/setup-bin@v3
+      with:
+        uri: 'https://github.com/Michael-F-Bryan/mdbook-linkcheck/releases/download/v0.7.6/mdbook-linkcheck.x86_64-unknown-linux-gnu.zip'
+        name: 'mdbook-linkcheck'
+        version: '0.7.6'
 
     - name: mdbook build
-      run: ./mdbook build && mv -v book/html/index.html book/html/mdbook.html
+      run: mdbook build && mv -v book/html/index.html book/html/mdbook.html
 
     - name: Deploy to server
       id: deploy-mdbook
-      uses: Pendect/action-rsyncer@v1.1.0
+      uses: Pendect/action-rsyncer@v2.0.0
       env:
         DEPLOY_KEY: ${{secrets.rsync_private_key}}
       with:
