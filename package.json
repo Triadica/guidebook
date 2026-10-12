@@ -1,16 +1,22 @@
 {
   "version": "0.0.12",
-  "name": "@calcit/docs-workflow",
+  "name": "@triadica/guidebook",
+  "private": true,
+  "packageManager": "yarn@4.18.0",
   "dependencies": {
-    "@calcit/docs-workflow": "^0.0.7",
-    "@calcit/procs": "^0.8.43"
+    "@calcit/procs": "0.29.0"
   },
   "devDependencies": {
     "bottom-tip": "^0.1.5",
     "cirru-color": "^0.2.4",
-    "github-markdown-css": "^5.5.1",
-    "highlight.js": "^11.9.0",
+    "github-markdown-css": "^5.8.1",
+    "highlight.js": "^11.11.1",
     "remarkable": "^2.0.1",
-    "vite": "^5.1.6"
+    "vite": "8.3.4"
+  },
+  "scripts": {
+    "compile": "calcit calcit.cirru js",
+    "build": "yarn compile && vite build",
+    "dev": "yarn compile && vite"
   }
 }
