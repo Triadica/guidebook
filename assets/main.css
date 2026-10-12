@@ -1,6 +1,21 @@
 
 
-@import url("@calcit/docs-workflow/assets/main.css");
+@import url("../.calcit/modules/docs-workflow/assets/github-gist.css");
+@import url("github-markdown-css/github-markdown.css");
+@import url("cirru-color/assets/cirru.css");
+
+::-webkit-input-placeholder {
+  color: #ccc;
+}
+::-moz-placeholder {
+  color: #ccc;
+}
+:-ms-input-placeholder {
+  color: #ccc;
+}
+:-moz-placeholder {
+  color: #ccc;
+}
 
 .calcit-tile {
   background-image: url('./calcit-tile.png');
