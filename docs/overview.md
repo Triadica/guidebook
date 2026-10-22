@@ -9,7 +9,7 @@ Explain Video(voice in Chinese)
 <iframe width="720" height="405" frameborder="0" src="https://www.ixigua.com/iframe/7117972355162309128?autoplay=0" referrerpolicy="unsafe-url" allowfullscreen></iframe>
 
 A minimal object fragment uses an ordinary list of numeric points. For imports,
-typed factory setup and host initialization, read [Guide](guide.md); this
+typed factory setup and host initialization, use Guide in the navigation sidebar; this
 reference fragment is not an independently executed application:
 
 ```cirru
