@@ -100,7 +100,14 @@
             :features $ #{} :js-ffi
         'render-app! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn render-app! ()
-            render! (mount-target) (comp-container @*reel schema/docs) dispatch!
+            render! (mount-target) (comp-container @*reel schema/docs)
+              fn (op)
+                hint-fn $ {}
+                  :args $ [] 'Dynamic
+                  :return 'Unit
+                  :features $ #{} :js-ffi
+                if (enum? op) (dispatch! op) (raise "|Expected an Enum render action")
+                , &unit
           :examples $ []
           :schema $ :: 'Fn $ {} (:return 'Unit)
             :args $ []
@@ -160,16 +167,10 @@
     'app.updater $ %{} 'FileEntry
       :defs $ {} $ 'updater
         %{} 'CodeEntry (:doc |)
-          :code $ quote $ defn updater (store op op-id op-time)
-            match op
-              (:states cursor s) (update-states store cursor s)
-              (:hydrate-storage data) data
-              _ $ do (println "|unknown op:" op) store
+          :code $ quote $ defn updater (store op op-id op-time) (docs-updater/updater store op op-id op-time)
           :examples $ []
           :schema $ :: 'Fn $ {} (:return 'docs-workflow.schema/Store)
             :args $ [] 'docs-workflow.schema/Store 'docs-workflow.schema/Op 'String 'Number
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.updater
-          :require
-            respo.cursor :refer $ update-states
-            docs-workflow.schema :as docs-schema
+          :require $ docs-workflow.updater :as docs-updater
