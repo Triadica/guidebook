@@ -1,13 +1,27 @@
 ## Guide
 
-I recommend <https://github.com/Triadica/triadica-workflow> for trying Triadica. Too much boilerplate code.
+For application boilerplate, consult <https://github.com/Triadica/triadica-workflow>
+and check that project's own paired Calcit/procs and library versions. This
+documentation site's formal 0.30.1 upgrade does not upgrade the separate template
+or publish a new Triadica release. This page is API reference, not a complete
+standalone application or a WebGL runtime test.
 
 <iframe width="720" height="405" frameborder="0" src="https://www.ixigua.com/iframe/7119835590593511966?autoplay=0" referrerpolicy="unsafe-url" allowfullscreen></iframe>
 
-An example of a Tradica component looks like this:
+A Triadica object factory has an explicit host-effect and value contract. Call it
+after browser/WebGL initialization, not in a native documentation check:
 
 ```cirru
+ns example.scene $ :require
+  triadica.alias :refer $ object
+  triadica.config :refer $ inline-shader
+  triadica.vector :refer $ &v+
+
 defn tiny-cube-object (v)
+  hint-fn $ {}
+    :args $ [] 'Number
+    :return $ :: 'Map 'Tag 'Dynamic
+    :features $ #{} :js-ffi
   let
       geo $ [] ([] -0.5 -0.5 0) ([] -0.5 0.5 0) ([] 0.5 0.5 0) ([] 0.5 -0.5 0) ([] -0.5 -0.5 -1) ([] -0.5 0.5 -1) ([] 0.5 0.5 -1) ([] 0.5 -0.5 -1)
       indices $ [] 0 1 1 2 2 3 3 0 0 4 1 5 2 6 3 7 4 5 5 6 6 7 7 4
@@ -15,10 +29,13 @@ defn tiny-cube-object (v)
         + 400 $ * v 10
         , 400 -1200
     object $ {} (:draw-mode :lines)
-      :vertex-shader $ inline-shader "\"lines.vert"
-      :fragment-shader $ inline-shader "\"lines.frag"
+      :vertex-shader $ inline-shader |lines.vert
+      :fragment-shader $ inline-shader |lines.frag
       :points $ map geo
         fn (p)
+          hint-fn $ {}
+            :args $ [] $ :: 'List 'Number
+            :return $ :: 'List 'Number
           -> p
             map $ fn (i) (* i 40)
             &v+ position
@@ -30,27 +47,16 @@ defn tiny-cube-object (v)
 - `:draw-mode`, WebGL draw mode, could be `:lines`, `:triangles`, `:line-strip`, `:line-loop`,
 - `:vertex-shader`, string for vertex shader code, which provides positions and attirbutes for each vertex,
 - `:fragment-shader`, string for fragment shader, which provides coloring algorithm,
-- `:points` and `:indices`, delcares information that generates `a_position` for vertex code, which is exactly position,
+- `:points` is a `List<List<Number>>`; each point is a numeric coordinate list. `:indices` is a `List<Number>`.
 
-For flexibilities and performance, Triadica provides a `%nested-attribute` record class for declaring type:
+The former `%nested-attribute` record example is retired. Published Space 0.0.43
+and the current implementation only construct the position array when `:points`
+is a List, then decode it as `List<List<Number>>`; they do not convert that old
+record. When generating groups of vertices, flatten the groups at the application
+boundary so every outer-list item is one numeric point. Do not assume arbitrary
+recursive point data is automatically collected.
 
-```cirru
-object $ {} (:draw-mode :triangles)
-  :vertex-shader $ inline-shader "\"stitch-bg.vert"
-  :fragment-shader $ inline-shader "\"stitch-bg.frag"
-  :points $ %{} %nested-attribute (:augment 3) (:length nil)
-    :data $ map-indexed chars
-      fn (idx c)
-        ->
-          [] ([] 0 0 0) ([] 1 0 0) ([] 1 -1 0) ([] 0 0 0) ([] 1 -1 0) ([] 0 -1 0)
-          map $ fn (x)
-            &v+
-              &v+ (v-scale x size) position
-              v-scale
-                [] (+ size gap) 0 0
-                , idx
-```
-
-- `:augment`, specifies how many values used for a single vertex, a `vec3` point, it's `3`,
-- `:length`, length of points, normally it's `total-size-of-array / augment`, it could be calculated while `nil` is passed,
-- `:data`, lists of floats. float numbers are collected recursively by Tradica, so no need to use `mapcat` or `concat`.
+Scalar `:attributes` use `Map<Tag, List<Number>>`. Packed attributes are a separate
+API; use the maintained library's actual examples and contract rather than
+inventing a replacement record name. The open options Map does not itself prove
+the field values have the right shape.

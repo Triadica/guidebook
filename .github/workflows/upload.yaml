@@ -16,6 +16,7 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-24.04
+    timeout-minutes: 20
     steps:
       - name: Check out repository
         uses: actions/checkout@v7.0.1
@@ -50,18 +51,44 @@ jobs:
           yarn install --immutable
           caps verify --toolchain
 
+      - name: Migrate source through formal CLI (temporary)
+        run: |
+          set -euo pipefail
+          test "$(calcit -v)" = 0.30.1
+          test "$(git hash-object calcit.cirru)" = e2dfc9cb62463e24094ac20976f32c2bedb2f417
+          calcit docs agents --contract
+          calcit query ns app.updater
+          calcit tree show app.updater/updater --path @3
+          calcit tree show app.main/render-app! --path @3.3
+          revision="$(calcit edit transaction --file .github/guidebook-source031.cirru --dry-run --format json | jq -er '.scoped_revision')"
+          calcit edit transaction --file .github/guidebook-source031.cirru --expect-revision "$revision" --format edn
+          calcit query ns app.updater
+          calcit tree show app.updater/updater --path @3
+          calcit tree show app.main/render-app! --path @3.3
+          calcit analyze program-diff HEAD --format edn
+
+      - name: Export checked source (temporary)
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: triadica-guidebook-source031
+          path: calcit.cirru
+          if-no-files-found: error
+          retention-days: 1
+
       - name: Validate Calcit upgrade
         run: |
           set -euo pipefail
           calcit edit format
           git diff --exit-code -- calcit.cirru
           calcit --check-only --all-defs --format json
+          calcit --check-only --ns app.config --ns app.main --ns app.schema --ns app.updater --summary-only --format json
+          calcit fix --workflow strict --verify --format json | jq -e '{workflow:.data.workflow,diagnostics:.diagnostics} | ., (.workflow.status == "passed" and .diagnostics == [])'
           calcit analyze weak-types --only deprecated-call --summary-only --format json | jq -e '.data.summary.calls == 0'
           calcit analyze weak-types --only dynamic-method --summary-only --format json | jq -e '.data.summary.findings == 0'
 
       - name: Build web assets with CDN URLs
         env:
-          VITE_BASE_URL: https://cos-sh.tiye.me/${{ github.repository }}/
+          VITE_BASE_URL: ${{ github.event_name == 'pull_request' && './' || format('https://cos-sh.tiye.me/{0}/', github.repository) }}
         run: |
           set -euo pipefail
           yarn build
@@ -84,10 +111,21 @@ jobs:
 
       - name: Build mdBook
         env:
-          MDBOOK_OUTPUT__HTML__SITE_URL: https://cos-sh.tiye.me/${{ github.repository }}/
+          MDBOOK_OUTPUT__HTML__SITE_URL: ${{ github.event_name == 'pull_request' && './' || format('https://cos-sh.tiye.me/{0}/', github.repository) }}
         run: |
           mdbook build
           mv book/html/index.html book/html/mdbook.html
+
+      - name: Save PR frontend preview
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: triadica-guidebook-preview
+          path: |
+            dist
+            book/html
+          if-no-files-found: error
+          retention-days: 7
 
       - name: Check current production revision
         id: production
