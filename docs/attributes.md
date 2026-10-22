@@ -14,12 +14,14 @@ Simplest way of passing attributes is create a list and pass points directly:
 object $ {}
   :draw-mode :triangles
   :points $ []
-    [] 1 2 3
-    [] 4 5 6
-    [] 4 5 6
+    [] 0 0 0
+    [] 1 0 0
+    [] 0 1 0
 ```
 
-notice that `:points` and `:indices` are used by twgl.js for creating `a_position` attributes.
+`:points` is `List<List<Number>>` and fills the position buffer. Optional
+`:indices` is a `List<Number>` for the separate index buffer, not another
+position attribute. These are reference fragments, not complete shader setups.
 
 internally it's turning into [AugmentedTypedArray](https://twgljs.org/docs/module-twgl_primitives.html#.createAugmentedTypedArray) that consumes by twgl.js .
 
@@ -27,13 +29,13 @@ internally it's turning into [AugmentedTypedArray](https://twgljs.org/docs/modul
 object $ {}
   :draw-mode :triangles
   :attributes $ {}
-    :positions $ []
-      [] 1 2 3
-      [] 4 5 6
-      [] 7 8 9
+    :opacity $ [] 1 0.5 1
 ```
 
-To make it easier to support complicated logics, there are other ways of passing attributes.
+Scalar `:attributes` have the contract `Map<Tag, List<Number>>`: for the three
+points above, opacity provides one value per vertex. The shader must declare
+the matching attribute. Do not put nested vector lists in this scalar field;
+use the separate packed API for per-vertex vector/scalar combinations.
 
 #### `:packed-attrs`
 
@@ -45,13 +47,13 @@ object $ {}
   :packed-attrs $ []
     []
       {}
-        :position $ [] 1 2 3
+        :position $ [] 0 0 0
         :color_type 0
       {}
-        :position $ [] 4 5 6
+        :position $ [] 1 0 0
         :color_type 1
       {}
-        :position $ [] 7 8 9
+        :position $ [] 0 1 0
         :color_type 2
 ```
 
