@@ -7,13 +7,15 @@
 
 这是 Triadica 文档站点，使用 [Docs Workflow](https://github.com/calcit-lang/docs-workflow) 渲染文档。应用源码以 `calcit.cirru` 为准，依赖和 Calcit 正式版本记录在 `deps.cirru`。
 
-当前迁移配对正式 Calcit/procs 0.30.1 与已发布 Docs Workflow 0.0.37，直接 Respo/Reel/JS-FFI
-版本与该依赖图一致。保留已有 Op 解码和 Tag 游标检查，只在真实渲染入口检查 Dynamic→Enum，
+本轮候选配对正式 Calcit/procs **0.32.0**、Docs Workflow **0.0.40** 候选，以及 Respo 0.17.0、
+Reel 0.7.0、JS-FFI 0.2.8。当前通过本地候选模块验证，尚未证明已发布依赖图的 Caps strict
+安装；上游正式 tag 可用后仍需干净安装及 PR CI。升级后重装依赖并刷新页面，样式可能有差异。
+默认 entry 的 dispatch-op 显式绑定原 renderer 的 Dynamic→Unit 合同。保留已有 Op 解码和 Tag 游标检查，只在真实渲染入口检查 Dynamic→Enum，
 同签名 updater 复用共享的受检 Store 更新；不弱化业务类型，不用 raise 替换 `hud!`。
 有效操作、文档树、60 秒 Map 存档写入及原本不读取存档恢复的行为不变；未知 updater 操作日志
 随共享实现改为 stderr，非 Enum 渲染输入会在入口明确报错。
 
-使用 Node.js 24、Yarn 4.18.0 和与 `@calcit/procs` 配对的 Calcit：
+依赖等待期统一为一小时，无版本豁免。使用 Node.js 24、Yarn 4.18.0 和与 `@calcit/procs` 配对的 Calcit：
 
 ```bash
 caps --strict --ci
