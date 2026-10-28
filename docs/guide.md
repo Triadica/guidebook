@@ -30,13 +30,12 @@ defn tiny-cube-object (v)
     object $ {} (:draw-mode :lines)
       :vertex-shader $ inline-shader |lines.vert
       :fragment-shader $ inline-shader |lines.frag
-      :points $ map geo
-        fn (p)
-          hint-fn $ Fn (List Number)
-            -> $ List Number
-          -> p
-            map $ fn (i) (* i 40)
-            &v+ position
+      :points $ map geo $ fn (p)
+        hint-fn $ Fn (List Number)
+          -> $ List Number
+        -> p
+          map $ fn (i) (* i 40)
+          &v+ position
       :indices indices
 ```
 
