@@ -13,7 +13,7 @@
 有效操作、文档树、60 秒 Map 存档写入及原本不读取存档恢复的行为不变；未知 updater 操作日志
 随共享实现改为 stderr，非 Enum 渲染输入会在入口明确报错。
 
-依赖等待期统一为一小时，无版本豁免。使用 Node.js 24、Yarn 4.18.0 和与 `@calcit/procs` 配对的 Calcit：
+npm 新版本解析统一执行一小时包龄门禁，无包级豁免；已有 lock 的解析结果由 `yarn install --immutable` 原样重放，不会在每次安装时重新检查包龄。使用 Node.js 24、Yarn 4.18.0 和与 `@calcit/procs` 配对的 Calcit：
 
 ```bash
 caps --strict --ci
