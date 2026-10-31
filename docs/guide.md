@@ -2,7 +2,7 @@
 
 For application boilerplate, consult <https://github.com/Triadica/triadica-workflow>
 and check that project's own paired Calcit/procs and library versions. This
-documentation site's formal 0.30.1 upgrade does not upgrade the separate template
+documentation site's formal Calcit 0.32.1 upgrade does not upgrade the separate template
 or publish a new Triadica release. This page is API reference, not a complete
 standalone application or a WebGL runtime test.
 
@@ -18,10 +18,9 @@ ns example.scene $ :require
   triadica.vector :refer $ &v+
 
 defn tiny-cube-object (v)
-  hint-fn $ {}
-    :args $ [] 'Number
-    :return $ :: 'Map 'Tag 'Dynamic
-    :features $ #{} :js-ffi
+  hint-fn $ Fn Number
+    -> $ Map Tag Dynamic
+    :features :js-ffi
   let
       geo $ [] ([] -0.5 -0.5 0) ([] -0.5 0.5 0) ([] 0.5 0.5 0) ([] 0.5 -0.5 0) ([] -0.5 -0.5 -1) ([] -0.5 0.5 -1) ([] 0.5 0.5 -1) ([] 0.5 -0.5 -1)
       indices $ [] 0 1 1 2 2 3 3 0 0 4 1 5 2 6 3 7 4 5 5 6 6 7 7 4
@@ -31,14 +30,12 @@ defn tiny-cube-object (v)
     object $ {} (:draw-mode :lines)
       :vertex-shader $ inline-shader |lines.vert
       :fragment-shader $ inline-shader |lines.frag
-      :points $ map geo
-        fn (p)
-          hint-fn $ {}
-            :args $ [] $ :: 'List 'Number
-            :return $ :: 'List 'Number
-          -> p
-            map $ fn (i) (* i 40)
-            &v+ position
+      :points $ map geo $ fn (p)
+        hint-fn $ Fn (List Number)
+          -> $ List Number
+        -> p
+          map $ fn (i) (* i 40)
+          &v+ position
       :indices indices
 ```
 
