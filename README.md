@@ -7,9 +7,7 @@
 
 这是 Triadica 文档站点，使用 [Docs Workflow](https://github.com/calcit-lang/docs-workflow) 渲染文档。应用源码以 `calcit.cirru` 为准，依赖和 Calcit 正式版本记录在 `deps.cirru`。
 
-本轮候选配对正式 Calcit/procs **0.32.0**、Docs Workflow **0.0.40** 候选，以及 Respo 0.17.0、
-Reel 0.7.0、JS-FFI 0.2.8。当前通过本地候选模块验证，尚未证明已发布依赖图的 Caps strict
-安装；上游正式 tag 可用后仍需干净安装及 PR CI。升级后重装依赖并刷新页面，样式可能有差异。
+本轮配对正式 Calcit/procs **0.32.1**、已发布 Docs Workflow **0.0.40**、Respo **0.17.1**、JS-FFI **0.2.9**，并通过真实发布依赖图安装。Reel **0.7.0-alpha.5** 及传递依赖 Alerts **0.11.0-alpha.4**、Markdown **0.5.0-alpha.5**、Router **0.9.0-alpha.4** 仍使用已发布 alpha 配对，不声称整个依赖图均为正式版。升级后重装依赖并刷新页面，样式可能有差异。
 默认 entry 的 dispatch-op 显式绑定原 renderer 的 Dynamic→Unit 合同。保留已有 Op 解码和 Tag 游标检查，只在真实渲染入口检查 Dynamic→Enum，
 同签名 updater 复用共享的受检 Store 更新；不弱化业务类型，不用 raise 替换 `hud!`。
 有效操作、文档树、60 秒 Map 存档写入及原本不读取存档恢复的行为不变；未知 updater 操作日志
@@ -36,7 +34,7 @@ yarn dev
 ### 限制
 
 - Guide/Overview 已按实际库合同修正工厂/import/类型提示，并退役不再被库转换的 `%nested-attribute` 示例；Attributes 区分数值点列表、标量属性和 packed 属性，没有替整个库宣称新版本已发布。其他历史代码片段尚未逐项迁移或独立编译，应用 strict 不代表所有示例可直接运行。
-- 部分外部视频可能已删除，生产打包仍有 highlight.js 引起的大 bundle 提示。
+- 部分外部视频可能已删除，生产打包仍有 highlight.js 引起的大 bundle 提示。mdBook 的 Cirru 代码块仍因未注册语言回退为无高亮，复现于 [Docs Workflow #95](https://github.com/calcit-lang/docs-workflow/issues/95)；本次不声称修复。
 - 当前 CI/实际双前端证据记录在迁移 PR；旧版本的绿灯不能代替本次验收，审查与生产部署分开决定。
 
 ### License

@@ -55,7 +55,7 @@ jobs:
         run: |
           set -euo pipefail
           calcit edit format
-          git diff --exit-code -- calcit.cirru
+          git diff --exit-code --quiet -- calcit.cirru
           calcit --check-only --all-defs --format json
           calcit --check-only --ns app.config --ns app.main --ns app.schema --ns app.updater --summary-only --format json
           calcit fix --workflow strict --verify --format json | jq -e '{workflow:.data.workflow,diagnostics:.diagnostics} | ., (.workflow.status == "passed" and .diagnostics == [])'

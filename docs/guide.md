@@ -2,7 +2,7 @@
 
 For application boilerplate, consult <https://github.com/Triadica/triadica-workflow>
 and check that project's own paired Calcit/procs and library versions. This
-documentation site's formal 0.32.0 candidate upgrade does not upgrade the separate template
+documentation site's formal Calcit 0.32.1 upgrade does not upgrade the separate template
 or publish a new Triadica release. This page is API reference, not a complete
 standalone application or a WebGL runtime test.
 
