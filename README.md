@@ -7,11 +7,7 @@
 
 这是 Triadica 文档站点，使用 [Docs Workflow](https://github.com/calcit-lang/docs-workflow) 渲染文档。应用源码以 `calcit.cirru` 为准，依赖和 Calcit 正式版本记录在 `deps.cirru`。
 
-本轮配对正式 Calcit/procs **0.38.0**、已发布 Docs Workflow **0.0.42**、Respo **0.19.5**、Reel **0.10.0**、JS-FFI **0.2.13**，并通过真实发布依赖图安装；传递依赖为 Alerts **0.14.2**、Markdown **0.8.2**、Router **0.12.2**、Respo UI **0.15.2**，与 Docs Workflow 0.0.42 的依赖一致。升级后重装依赖并刷新页面，样式可能有差异。
-默认 entry 的 dispatch-op 类型槽绑定 `docs-workflow.schema/Op`；`dispatch!` 本身接受开放的 `AnyEnum`（`:open :decode`），保留已有 Op 解码和 Tag 游标检查，renderer 入口仍检查输入为 Enum，
-同签名 updater 复用共享的受检 Store 更新；不弱化业务类型，不用 raise 替换 `hud!`。
-有效操作、文档树、60 秒 Map 存档写入及原本不读取存档恢复的行为不变；未知 updater 操作日志
-随共享实现改为 stderr，非 Enum 渲染输入会在入口明确报错。
+开发使用配对的 Calcit CLI 和 `@calcit/procs` 0.40.0。文档导航通过具名 `docs-workflow.schema/Op` 派发。Reel 0.11 的面板和快捷键使用独立的 `reel.typed/Control` 回调，由 Docs Workflow 0.1.0 的组件接收。
 
 npm 新版本解析统一执行一小时包龄门禁，无包级豁免；已有 lock 的解析结果由 `yarn install --immutable` 原样重放，不会在每次安装时重新检查包龄。使用 Node.js 24、Yarn 4.18.0 和与 `@calcit/procs` 配对的 Calcit：
 
