@@ -18,7 +18,7 @@
         'site $ %{} 'CodeEntry (:doc |)
           :code $ quote $ def site (SiteConfig :storage-key |triadica-guidebook)
           :examples $ []
-          :schema $ quote docs-workflow.schema/SiteConfig
+          :schema $ quote SiteConfig
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.config
           :require $ docs-workflow.schema :refer $ SiteConfig
@@ -27,7 +27,7 @@
         '*reel $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defref *reel (typed/new-reel schema/store)
           :examples $ []
-          :schema $ quote $ Ref (reel.typed/State docs-workflow.schema/Op docs-workflow.schema/Store)
+          :schema $ quote $ Ref (typed/State docs-workflow.schema/Op docs-workflow.schema/Store)
         'dispatch! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn dispatch! (op)
             when config/dev? $ println |Dispatch: op
@@ -59,7 +59,7 @@
             reset! *reel $ typed/apply-control updater @*reel control
             , &unit
           :examples $ []
-          :schema $ quote $ Fn reel.typed/Control (-> Unit) (:features :js-ffi)
+          :schema $ quote $ Fn typed/Control (-> Unit) (:features :js-ffi)
         'persist-storage! $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defn persist-storage! () (shared/console-log! |persist)
             browser/storage-set! (:storage-key config/site)
@@ -118,7 +118,7 @@
               DocNode :title |About :key :about :content (load-doc |about.md) :children $ []
               DocNode :title |Demonstration :key :demonstration :content (load-doc |demonstration.md) :children $ []
           :examples $ []
-          :schema $ quote $ List docs-workflow.schema/DocNode
+          :schema $ quote $ List DocNode
         'load-doc $ %{} 'CodeEntry (:doc |)
           :code $ quote $ defmacro load-doc (filename)
             read-file $ str |docs/ filename
@@ -130,7 +130,7 @@
           :code $ quote $ def store
             Store :states $ {} $ :cursor ([])
           :examples $ []
-          :schema $ quote docs-workflow.schema/Store
+          :schema $ quote Store
       :ns $ %{} 'NsEntry (:doc |)
         :code $ quote $ ns app.schema
           :require $ docs-workflow.schema :refer $ DocNode Store
