@@ -7,7 +7,7 @@
 
 这是 Triadica 文档站点，使用 [Docs Workflow](https://github.com/calcit-lang/docs-workflow) 渲染文档。应用源码以 `calcit.cirru` 为准，依赖和 Calcit 正式版本记录在 `deps.cirru`。
 
-开发使用配对的 Calcit CLI 和 `@calcit/procs` 0.41.0。文档导航通过具名 `docs-workflow.schema/Op` 派发。Reel 0.11 的面板和快捷键使用独立的 `reel.typed/Control` 回调，由 Docs Workflow 0.1.0 的组件接收。
+开发使用配对的 Calcit CLI 和 `@calcit/procs` 0.41.1。文档导航通过具名 `docs-workflow.schema/Op` 派发。Reel 0.11 的面板和快捷键使用独立的 `reel.typed/Control` 回调，由 Docs Workflow 0.1.0 的组件接收。
 
 npm 新版本解析统一执行一小时包龄门禁，无包级豁免；已有 lock 的解析结果由 `yarn install --immutable` 原样重放，不会在每次安装时重新检查包龄。使用 Node.js 24、Yarn 4.18.0 和与 `@calcit/procs` 配对的 Calcit：
 
